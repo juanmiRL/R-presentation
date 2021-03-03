@@ -1,0 +1,12 @@
+.exclaim .reveal .state-background {
+  background: green;
+} 
+
+.exclaim .reveal div {
+  color: white;
+  font-family: 'Lacquer';
+}
+
+.exclaim .reveal code {
+  color: blue;
+}
