@@ -107,3 +107,6 @@ htmlwidgets::saveWidget(p,'plotly.html')
 <div class="p_iframe">
 <iframe frameborder="0" seamless='seamless' scrolling=no src="plotly.html"></iframe>
 </div>
+
+ 
+========================================================
