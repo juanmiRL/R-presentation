@@ -31,11 +31,16 @@ A data frame with 50 observations on the following 5 variables.
 ## Summary
 
 Below it can be seen a brief summary of the features, with the minimum and maximum value, the first and third quantile, the mean and the median for each quantitative variable. For the categorical variable (sex) it can be seen a count for each level. 
-```{r,echo=FALSE}
-library(Stat2Data)
-library(skimr)
-data(HorsePrices)
-summary(HorsePrices)
+
+```
+    HorseID           Price            Age            Height      Sex   
+ Min.   :  2.00   Min.   : 1100   Min.   : 0.50   Min.   :14.25   f:20  
+ 1st Qu.: 43.25   1st Qu.:15000   1st Qu.: 4.00   1st Qu.:16.00   m:30  
+ Median :101.50   Median :25000   Median : 6.00   Median :16.50         
+ Mean   :111.88   Mean   :26840   Mean   : 7.11   Mean   :16.33         
+ 3rd Qu.:174.50   3rd Qu.:39750   3rd Qu.: 8.00   3rd Qu.:16.75         
+ Max.   :249.00   Max.   :60000   Max.   :20.00   Max.   :17.25         
+                                                  NA's   :3             
 ```
 
 
@@ -43,13 +48,7 @@ Plots
 ========================================================
 
 ## Boxplot Price 
-```{r echo=FALSE}
-library(plotly)
-p1 <-  plot_ly(data.frame(HorsePrices), y=~Price, name="Boxplot", type="box",color = I("yellow"))
-  
 
-htmlwidgets::saveWidget(p1,'plotly1.html')
-```
 
 <style>
   .p_iframe iframe {
@@ -64,13 +63,7 @@ htmlwidgets::saveWidget(p1,'plotly1.html')
 
 ***
 ## Histogram Age
-```{r echo=FALSE}
-library(plotly)
-p2 <-  plot_ly(data.frame(HorsePrices), y=~Age, name="Hist", type="bar", color = I("green"))
-  
 
-htmlwidgets::saveWidget(p2,'plotly2.html')
-```
 
 <style>
   .p_iframe iframe {
@@ -89,13 +82,7 @@ Scatterplots
 ## Price vs Age
 In the following scatter plot we can see the relationship beteween the age of the horse and his price. 
 
-```{r, echo=FALSE}
-library(plotly)
 
-p <-  plot_ly(data.frame(HorsePrices), x=~Age, y=~Price, name="scatter_horse", type="scatter")
-
-htmlwidgets::saveWidget(p,'plotly.html')
-```
 
 <style>
   .p_iframe iframe {
@@ -113,13 +100,7 @@ htmlwidgets::saveWidget(p,'plotly.html')
 
 In the following scatter plot we can see the relationship beteween the height of the horse and his price. 
 
-```{r, echo=FALSE}
-library(plotly)
-p4 <-  plot_ly(data.frame(HorsePrices), x=~Height, y=~Price, name="scatter_horse2", type="scatter")
-  
 
-htmlwidgets::saveWidget(p4,'plotly4.html')
-```
 
 <style>
   .p_iframe iframe {
@@ -142,9 +123,12 @@ be aware off, since they need to be satisfied in order to make use of the model.
 
 In this case the model is:  $$\hat{price_i}= \beta_0 + \beta_1 Age_i + \beta_2 Height_i$$
 
-```{r, echo=FALSE}
-model<-lm(Price~Age+Height,data = HorsePrices)
-summary(model)$coefficients
+
+```
+               Estimate Std. Error   t value     Pr(>|t|)
+(Intercept) -172210.013 45285.9372 -3.802726 4.373692e-04
+Age           -1432.837   418.6429 -3.422574 1.351502e-03
+Height        12914.956  2824.8927  4.571840 3.908789e-05
 ```
 
 
