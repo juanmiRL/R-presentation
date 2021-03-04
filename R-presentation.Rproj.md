@@ -6,9 +6,11 @@ autosize: true
 font-import: https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap"
 font-family: 'Indie Flower';
 css: css_style.css
+
 Data Tidying and Reporting 
 
 Master in Statistics for Data Science
+
 
 ========================================================
 incremental: true
@@ -27,7 +29,9 @@ A data frame with 50 observations on the following 5 variables.
 
 
 ========================================================
-
+incremental: true
+transition:fade
+type:exclaim
 ## Summary
 
 Below it can be seen a brief summary of the features, with the minimum and maximum value, the first and third quantile, the mean and the median for each quantitative variable. For the categorical variable (sex) it can be seen a count for each level. 
@@ -46,6 +50,8 @@ Below it can be seen a brief summary of the features, with the minimum and maxim
 
 Plots
 ========================================================
+incremental: true
+transition:fade
 
 ## Boxplot Price 
 
@@ -78,7 +84,8 @@ Plots
 
 Scatterplots 
 ========================================================
-
+incremental: true
+transition:fade
 ## Price vs Age
 In the following scatter plot we can see the relationship beteween the age of the horse and his price. 
 
@@ -116,20 +123,14 @@ In the following scatter plot we can see the relationship beteween the height of
 
 Multiple regression model  
 ========================================================
-
+incremental: true
+transition:fade
 We are going to perform a multiple regression model to try to explain the price as a function of the age and the height of the horse. 
 The regression model is formulated under certain assumptions that we need to
 be aware off, since they need to be satisfied in order to make use of the model.
 
 In this case the model is:  $$\hat{price_i}= \beta_0 + \beta_1 Age_i + \beta_2 Height_i$$
 
-
-```
-               Estimate Std. Error   t value     Pr(>|t|)
-(Intercept) -172210.013 45285.9372 -3.802726 4.373692e-04
-Age           -1432.837   418.6429 -3.422574 1.351502e-03
-Height        12914.956  2824.8927  4.571840 3.908789e-05
-```
 
 
 ***
@@ -150,6 +151,22 @@ In summary:
 $$\epsilon ∼ N(0, I\sigma^2)
 ) ⇒ Y ∼ N(X\beta,I\sigma^2)$$
 
+Results of the model  
+========================================================
+incremental: true
+transition:fade
+
+It can be seen that the coefficients are significant (p-value very low), which means that the coefficients of each of the predictors can be interpreted as follows, if we increase the age unit keeping the height constant, the price decreases by 1432 units. In the same way, the height coefficient can be interpreted.
+
+
+```
+               Estimate Std. Error   t value     Pr(>|t|)
+(Intercept) -172210.013 45285.9372 -3.802726 4.373692e-04
+Age           -1432.837   418.6429 -3.422574 1.351502e-03
+Height        12914.956  2824.8927  4.571840 3.908789e-05
+```
+
+![](https://github.com/juanmiRL/R-presentation/blob/main/american-quarter-horse.jpg?raw=true)
 
 
 
