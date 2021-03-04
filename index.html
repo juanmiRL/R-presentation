@@ -795,7 +795,7 @@ hljs.initHighlightingOnLoad();
 
   
 
-
+<style>body {    overflow: scroll;}</style>
 
 
 
@@ -942,18 +942,10 @@ hljs.initHighlightingOnLoad();
 </section>
 <section data-transition="fade" data-transition-speed="default">
 <h3>Multiple regression model  </h3>
-<div class="column column1 slideContent" >
+<div class="slideContent" >
 <p>We are going to perform a multiple regression model to try to explain the price as a function of the age and the height of the horse. 
 The regression model is formulated under certain assumptions that we need to
 be aware off, since they need to be satisfied in order to make use of the model.</p>
-
-<p class="fragment">In this case the model is:  \[ \hat{price_i}= \beta_0 + \beta_1 Age_i + \beta_2 Height_i \]</p>
-
-
-</div>
-
-<div class="column column2 slideContent" >
-
 
 <h2 class="fragment">Assumptions of linear regression:</h2>
 
@@ -971,6 +963,8 @@ be aware off, since they need to be satisfied in order to make use of the model.
 In summary:
 \[ \epsilon ∼ N(0, I\sigma^2)
 ) ⇒ Y ∼ N(X\beta,I\sigma^2) \]</p>
+
+<p class="fragment">In this case the model is:  \[ \hat{price_i}= \beta_0 + \beta_1 Age_i + \beta_2 Height_i \]</p>
 
 </div>
 
