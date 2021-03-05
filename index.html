@@ -845,16 +845,30 @@ hljs.initHighlightingOnLoad();
 <div class="slideContent noTitle" >
 <h2 class="fragment">Summary</h2>
 
-<p>Below it can be seen a brief summary of the features, with the minimum and maximum value, the first and third quantile, the mean and the median for each quantitative variable. For the categorical variable (sex) it can be seen a count for each level. </p>
+<p>Below it can be seen a brief summary of the features, with the minimum and maximum value, the first and third quantile, the mean and the median for each quantitative variable. </p>
 
-<pre class="fragment"><code>    HorseID           Price            Age            Height      Sex   
- Min.   :  2.00   Min.   : 1100   Min.   : 0.50   Min.   :14.25   f:20  
- 1st Qu.: 43.25   1st Qu.:15000   1st Qu.: 4.00   1st Qu.:16.00   m:30  
- Median :101.50   Median :25000   Median : 6.00   Median :16.50         
- Mean   :111.88   Mean   :26840   Mean   : 7.11   Mean   :16.33         
- 3rd Qu.:174.50   3rd Qu.:39750   3rd Qu.: 8.00   3rd Qu.:16.75         
- Max.   :249.00   Max.   :60000   Max.   :20.00   Max.   :17.25         
-                                                  NA&#39;s   :3             
+<ul>
+<li class="fragment">Summary of Price</li>
+</ul>
+
+<pre class="fragment"><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+   1100   15000   25000   26840   39750   60000 
+</code></pre>
+
+<ul>
+<li class="fragment">Summary of Age</li>
+</ul>
+
+<pre class="fragment"><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+   0.50    4.00    6.00    7.11    8.00   20.00 
+</code></pre>
+
+<ul>
+<li class="fragment">Summary of Height</li>
+</ul>
+
+<pre class="fragment"><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA&#39;s 
+  14.25   16.00   16.50   16.33   16.75   17.25       3 
 </code></pre>
 
 </div>
@@ -863,7 +877,9 @@ hljs.initHighlightingOnLoad();
 <section data-transition="fade" data-transition-speed="default">
 <h3>Plots</h3>
 <div class="column column1 slideContent" >
-<h2 class="fragment">Boxplot Price</h2>
+<ul>
+<li class="fragment">Boxplot Price </li>
+</ul>
 
 <style>
   .p_iframe iframe {
@@ -873,7 +889,7 @@ hljs.initHighlightingOnLoad();
 </style>
 
 <div class="p_iframe">
-<iframe frameborder="0" seamless='seamless' scrolling=yes src="plotly1.html"></iframe>
+<iframe frameborder="0" seamless='seamless' scrolling=no src="plotly1.html"></iframe>
 </div>
 
 
@@ -882,7 +898,9 @@ hljs.initHighlightingOnLoad();
 <div class="column column2 slideContent" >
 
 
-<h2 class="fragment">Histogram Age</h2>
+<ul>
+<li class="fragment">Histogram Age</li>
+</ul>
 
 <style>
   .p_iframe iframe {
@@ -892,7 +910,24 @@ hljs.initHighlightingOnLoad();
 </style>
 
 <div class="p_iframe">
-<iframe frameborder="0" seamless='seamless' scrolling=yes src="plotly2.html"></iframe>
+<iframe frameborder="0" seamless='seamless' scrolling=no src="plotly2.html"></iframe>
+</div>
+
+<hr/>
+
+<ul>
+<li class="fragment">Boxplot Height</li>
+</ul>
+
+<style>
+  .p_iframe iframe {
+    width:100%;
+    height:300px;
+}
+</style>
+
+<div class="p_iframe">
+<iframe frameborder="0" seamless='seamless' scrolling=no src="plotly5.html"></iframe>
 </div>
 
 </div>
@@ -901,7 +936,9 @@ hljs.initHighlightingOnLoad();
 <section data-transition="fade" data-transition-speed="default">
 <h3>Scatterplots </h3>
 <div class="column column1 slideContent" >
-<h2 class="fragment">Price vs Age</h2>
+<ul>
+<li class="fragment">Price vs Age</li>
+</ul>
 
 <p>In the following scatter plot we can see the relationship beteween the age of the horse and his price. </p>
 
@@ -922,7 +959,9 @@ hljs.initHighlightingOnLoad();
 <div class="column column2 slideContent" >
 
 
-<h2 class="fragment">Price vs Height</h2>
+<ul>
+<li class="fragment">Price vs Height</li>
+</ul>
 
 <p class="fragment">In the following scatter plot we can see the relationship beteween the height of the horse and his price. </p>
 
@@ -949,20 +988,19 @@ be aware off, since they need to be satisfied in order to make use of the model.
 
 <h2 class="fragment">Assumptions of linear regression:</h2>
 
-<p class="fragment">• Linearity: The mean of the response, is a linear function of the predictors,
-\[ E[Y|X_1 = x_1, . . . , X_k = x_k] = \beta_0 + \beta_1 x_1 + . . . + \beta_k x_k \]</p>
-
-<p class="fragment">• Independence: The errors are independent,
-\[ Cov[\epsilon_i, \epsilon_j ] = 0,   i \neq j \]</p>
-
-<p class="fragment">• Homocedasticity: The variance of the errors at each value of the predictor is constant.
-\[ Var[\epsilon_i|X_1 = x_1, . . . , X_k = x_k] = \sigma^2 \]</p>
-
-<p class="fragment">• Normality: The errors are Normally distributed.
-\[ \epsilon_i ∼ N(0, \sigma^2) \]
+<ul>
+<li class="fragment"><p class="fragment">Linearity: The mean of the response, is a linear function of the predictors,
+\[ E[Y|X_1 = x_1, . . . , X_k = x_k] = \beta_0 + \beta_1 x_1 + . . . + \beta_k x_k \]</p></li>
+<li class="fragment"><p class="fragment">Independence: The errors are independent,
+\[ Cov[\epsilon_i, \epsilon_j ] = 0,   i \neq j \]</p></li>
+<li class="fragment"><p class="fragment">Homocedasticity: The variance of the errors at each value of the predictor is constant.
+\[ Var[\epsilon_i|X_1 = x_1, . . . , X_k = x_k] = \sigma^2 \]</p></li>
+<li class="fragment"><p class="fragment">Normality: The errors are Normally distributed.
+\[ \epsilon_i \sim N(0, \sigma^2) \]
 In summary:
-\[ \epsilon ∼ N(0, I\sigma^2)
-) ⇒ Y ∼ N(X\beta,I\sigma^2) \]</p>
+\[ \epsilon \sim N(0, I\sigma^2)
+) \Rightarrow Y \sim N(X\beta,I\sigma^2) \]</p></li>
+</ul>
 
 <p class="fragment">In this case the model is:  \[ \hat{price_i}= \beta_0 + \beta_1 Age_i + \beta_2 Height_i \]</p>
 
@@ -974,10 +1012,28 @@ In summary:
 <div class="mediaInline slideContent" >
 <p>It can be seen that the coefficients are significant (p-value very low), which means that the coefficients of each of the predictors can be interpreted as follows, if we increase the age unit keeping the height constant, the price decreases by 1432 units. In the same way, the height coefficient can be interpreted.</p>
 
-<pre class="fragment"><code>               Estimate Std. Error   t value     Pr(&gt;|t|)
-(Intercept) -172210.013 45285.9372 -3.802726 4.373692e-04
-Age           -1432.837   418.6429 -3.422574 1.351502e-03
-Height        12914.956  2824.8927  4.571840 3.908789e-05
+<p class="fragment">We can see in the adjusted R squared that this model with the predictor variables age and height explains 33.6% of the variance of the horse price.</p>
+
+<pre class="fragment"><code>
+Call:
+lm(formula = Price ~ Age + Height, data = HorsePrices)
+
+Residuals:
+   Min     1Q Median     3Q    Max 
+-22842  -8606   -180   7360  34511 
+
+Coefficients:
+             Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) -172210.0    45285.9  -3.803 0.000437 ***
+Age           -1432.8      418.6  -3.423 0.001352 ** 
+Height        12915.0     2824.9   4.572 3.91e-05 ***
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Residual standard error: 12010 on 44 degrees of freedom
+  (3 observations deleted due to missingness)
+Multiple R-squared:  0.3653,    Adjusted R-squared:  0.3365 
+F-statistic: 12.66 on 2 and 44 DF,  p-value: 4.529e-05
 </code></pre>
 
 <p class="fragment"><img src="https://github.com/juanmiRL/R-presentation/blob/main/american-quarter-horse.jpg?raw=true" alt=""/></p>
