@@ -1,3 +1,11 @@
+
+<style>
+body {
+    overflow: scroll;
+}
+</style>
+
+
 PRICE OF HORSES  
 ========================================================
 author: Juan Miguel Rodriguez Lago 
@@ -34,18 +42,29 @@ transition:fade
 type:exclaim
 ## Summary
 
-Below it can be seen a brief summary of the features, with the minimum and maximum value, the first and third quantile, the mean and the median for each quantitative variable. For the categorical variable (sex) it can be seen a count for each level. 
+Below it can be seen a brief summary of the features, with the minimum and maximum value, the first and third quantile, the mean and the median for each quantitative variable. 
+
+- Summary of Price
 
 ```
-    HorseID           Price            Age            Height      Sex   
- Min.   :  2.00   Min.   : 1100   Min.   : 0.50   Min.   :14.25   f:20  
- 1st Qu.: 43.25   1st Qu.:15000   1st Qu.: 4.00   1st Qu.:16.00   m:30  
- Median :101.50   Median :25000   Median : 6.00   Median :16.50         
- Mean   :111.88   Mean   :26840   Mean   : 7.11   Mean   :16.33         
- 3rd Qu.:174.50   3rd Qu.:39750   3rd Qu.: 8.00   3rd Qu.:16.75         
- Max.   :249.00   Max.   :60000   Max.   :20.00   Max.   :17.25         
-                                                  NA's   :3             
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+   1100   15000   25000   26840   39750   60000 
 ```
+
+- Summary of Age
+
+```
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+   0.50    4.00    6.00    7.11    8.00   20.00 
+```
+
+- Summary of Height
+
+```
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+  14.25   16.00   16.50   16.33   16.75   17.25       3 
+```
+
 
 
 Plots
@@ -53,7 +72,7 @@ Plots
 incremental: true
 transition:fade
 
-## Boxplot Price 
+- Boxplot Price 
 
 
 <style>
@@ -64,11 +83,11 @@ transition:fade
 </style>
 
 <div class="p_iframe">
-<iframe frameborder="0" seamless='seamless' scrolling=yes src="plotly1.html"></iframe>
+<iframe frameborder="0" seamless='seamless' scrolling=no src="plotly1.html"></iframe>
 </div>
 
 ***
-## Histogram Age
+- Histogram Age
 
 
 <style>
@@ -79,14 +98,32 @@ transition:fade
 </style>
 
 <div class="p_iframe">
-<iframe frameborder="0" seamless='seamless' scrolling=yes src="plotly2.html"></iframe>
+<iframe frameborder="0" seamless='seamless' scrolling=no src="plotly2.html"></iframe>
 </div>
+
+
+***
+- Boxplot Height
+
+
+<style>
+  .p_iframe iframe {
+    width:100%;
+    height:300px;
+}
+</style>
+
+<div class="p_iframe">
+<iframe frameborder="0" seamless='seamless' scrolling=no src="plotly5.html"></iframe>
+</div>
+
 
 Scatterplots 
 ========================================================
 incremental: true
 transition:fade
-## Price vs Age
+- Price vs Age
+
 In the following scatter plot we can see the relationship beteween the age of the horse and his price. 
 
 
@@ -103,7 +140,7 @@ In the following scatter plot we can see the relationship beteween the age of th
 </div>
 
 ***
-## Price vs Height
+- Price vs Height
 
 In the following scatter plot we can see the relationship beteween the height of the horse and his price. 
 
@@ -129,27 +166,24 @@ We are going to perform a multiple regression model to try to explain the price 
 The regression model is formulated under certain assumptions that we need to
 be aware off, since they need to be satisfied in order to make use of the model.
 
-In this case the model is:  $$\hat{price_i}= \beta_0 + \beta_1 Age_i + \beta_2 Height_i$$
-
-
-
-***
 ## Assumptions of linear regression:
 
-• Linearity: The mean of the response, is a linear function of the predictors,
+- Linearity: The mean of the response, is a linear function of the predictors,
 $$E[Y|X_1 = x_1, . . . , X_k = x_k] = \beta_0 + \beta_1 x_1 + . . . + \beta_k x_k$$
 
-• Independence: The errors are independent,
+- Independence: The errors are independent,
 $$Cov[\epsilon_i, \epsilon_j ] = 0,   i \neq j$$
 
-• Homocedasticity: The variance of the errors at each value of the predictor is constant.
+- Homocedasticity: The variance of the errors at each value of the predictor is constant.
 $$Var[\epsilon_i|X_1 = x_1, . . . , X_k = x_k] = \sigma^2$$
 
-• Normality: The errors are Normally distributed.
-$$\epsilon_i ∼ N(0, \sigma^2)$$
+- Normality: The errors are Normally distributed.
+$$\epsilon_i \sim N(0, \sigma^2)$$
 In summary:
-$$\epsilon ∼ N(0, I\sigma^2)
-) ⇒ Y ∼ N(X\beta,I\sigma^2)$$
+$$\epsilon \sim N(0, I\sigma^2)
+) \Rightarrow Y \sim N(X\beta,I\sigma^2)$$
+
+In this case the model is:  $$\hat{price_i}= \beta_0 + \beta_1 Age_i + \beta_2 Height_i$$
 
 Results of the model  
 ========================================================
@@ -158,12 +192,30 @@ transition:fade
 
 It can be seen that the coefficients are significant (p-value very low), which means that the coefficients of each of the predictors can be interpreted as follows, if we increase the age unit keeping the height constant, the price decreases by 1432 units. In the same way, the height coefficient can be interpreted.
 
+We can see in the adjusted R squared that this model with the predictor variables age and height explains 33.6% of the variance of the horse price.
+
 
 ```
-               Estimate Std. Error   t value     Pr(>|t|)
-(Intercept) -172210.013 45285.9372 -3.802726 4.373692e-04
-Age           -1432.837   418.6429 -3.422574 1.351502e-03
-Height        12914.956  2824.8927  4.571840 3.908789e-05
+
+Call:
+lm(formula = Price ~ Age + Height, data = HorsePrices)
+
+Residuals:
+   Min     1Q Median     3Q    Max 
+-22842  -8606   -180   7360  34511 
+
+Coefficients:
+             Estimate Std. Error t value Pr(>|t|)    
+(Intercept) -172210.0    45285.9  -3.803 0.000437 ***
+Age           -1432.8      418.6  -3.423 0.001352 ** 
+Height        12915.0     2824.9   4.572 3.91e-05 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 12010 on 44 degrees of freedom
+  (3 observations deleted due to missingness)
+Multiple R-squared:  0.3653,	Adjusted R-squared:  0.3365 
+F-statistic: 12.66 on 2 and 44 DF,  p-value: 4.529e-05
 ```
 
 ![](https://github.com/juanmiRL/R-presentation/blob/main/american-quarter-horse.jpg?raw=true)

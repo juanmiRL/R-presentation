@@ -1,3 +1,11 @@
+
+<style>
+body {
+    overflow: scroll;
+}
+</style>
+
+
 PRICE OF HORSES  
 ========================================================
 author: Juan Miguel Rodriguez Lago 
@@ -34,12 +42,29 @@ transition:fade
 type:exclaim
 ## Summary
 
-Below it can be seen a brief summary of the features, with the minimum and maximum value, the first and third quantile, the mean and the median for each quantitative variable. For the categorical variable (sex) it can be seen a count for each level. 
+Below it can be seen a brief summary of the features, with the minimum and maximum value, the first and third quantile, the mean and the median for each quantitative variable. 
+
+- Summary of Price
 ```{r,echo=FALSE}
 library(Stat2Data)
 data(HorsePrices)
-summary(HorsePrices)
+summary(HorsePrices$Price)
 ```
+
+- Summary of Age
+```{r,echo=FALSE}
+library(Stat2Data)
+data(HorsePrices)
+summary(HorsePrices$Age)
+```
+
+- Summary of Height
+```{r,echo=FALSE}
+library(Stat2Data)
+data(HorsePrices)
+summary(HorsePrices$Height)
+```
+
 
 
 Plots
@@ -47,7 +72,7 @@ Plots
 incremental: true
 transition:fade
 
-## Boxplot Price 
+- Boxplot Price 
 ```{r echo=FALSE}
 library(plotly)
 p1 <-  plot_ly(data.frame(HorsePrices), y=~Price, name="Boxplot", type="box",color = I("yellow"))
@@ -64,11 +89,11 @@ htmlwidgets::saveWidget(p1,'plotly1.html')
 </style>
 
 <div class="p_iframe">
-<iframe frameborder="0" seamless='seamless' scrolling=yes src="plotly1.html"></iframe>
+<iframe frameborder="0" seamless='seamless' scrolling=no src="plotly1.html"></iframe>
 </div>
 
 ***
-## Histogram Age
+- Histogram Age
 ```{r echo=FALSE}
 library(plotly)
 p2 <-  plot_ly(data.frame(HorsePrices), y=~Age, name="Hist", type="bar", color = I("green"))
@@ -85,14 +110,38 @@ htmlwidgets::saveWidget(p2,'plotly2.html')
 </style>
 
 <div class="p_iframe">
-<iframe frameborder="0" seamless='seamless' scrolling=yes src="plotly2.html"></iframe>
+<iframe frameborder="0" seamless='seamless' scrolling=no src="plotly2.html"></iframe>
 </div>
+
+
+***
+- Boxplot Height
+```{r echo=FALSE}
+library(plotly)
+p5 <-  plot_ly(data.frame(HorsePrices), y=~Height, name="Hist", type="box", color = I("orange"))
+  
+
+htmlwidgets::saveWidget(p5,'plotly5.html')
+```
+
+<style>
+  .p_iframe iframe {
+    width:100%;
+    height:300px;
+}
+</style>
+
+<div class="p_iframe">
+<iframe frameborder="0" seamless='seamless' scrolling=no src="plotly5.html"></iframe>
+</div>
+
 
 Scatterplots 
 ========================================================
 incremental: true
 transition:fade
-## Price vs Age
+- Price vs Age
+
 In the following scatter plot we can see the relationship beteween the age of the horse and his price. 
 
 ```{r, echo=FALSE}
@@ -115,7 +164,7 @@ htmlwidgets::saveWidget(p,'plotly.html')
 </div>
 
 ***
-## Price vs Height
+- Price vs Height
 
 In the following scatter plot we can see the relationship beteween the height of the horse and his price. 
 
@@ -147,27 +196,24 @@ We are going to perform a multiple regression model to try to explain the price 
 The regression model is formulated under certain assumptions that we need to
 be aware off, since they need to be satisfied in order to make use of the model.
 
-In this case the model is:  $$\hat{price_i}= \beta_0 + \beta_1 Age_i + \beta_2 Height_i$$
-
-
-
-***
 ## Assumptions of linear regression:
 
-• Linearity: The mean of the response, is a linear function of the predictors,
+- Linearity: The mean of the response, is a linear function of the predictors,
 $$E[Y|X_1 = x_1, . . . , X_k = x_k] = \beta_0 + \beta_1 x_1 + . . . + \beta_k x_k$$
 
-• Independence: The errors are independent,
+- Independence: The errors are independent,
 $$Cov[\epsilon_i, \epsilon_j ] = 0,   i \neq j$$
 
-• Homocedasticity: The variance of the errors at each value of the predictor is constant.
+- Homocedasticity: The variance of the errors at each value of the predictor is constant.
 $$Var[\epsilon_i|X_1 = x_1, . . . , X_k = x_k] = \sigma^2$$
 
-• Normality: The errors are Normally distributed.
-$$\epsilon_i ∼ N(0, \sigma^2)$$
+- Normality: The errors are Normally distributed.
+$$\epsilon_i \sim N(0, \sigma^2)$$
 In summary:
-$$\epsilon ∼ N(0, I\sigma^2)
-) ⇒ Y ∼ N(X\beta,I\sigma^2)$$
+$$\epsilon \sim N(0, I\sigma^2)
+) \Rightarrow Y \sim N(X\beta,I\sigma^2)$$
+
+In this case the model is:  $$\hat{price_i}= \beta_0 + \beta_1 Age_i + \beta_2 Height_i$$
 
 Results of the model  
 ========================================================
@@ -176,9 +222,11 @@ transition:fade
 
 It can be seen that the coefficients are significant (p-value very low), which means that the coefficients of each of the predictors can be interpreted as follows, if we increase the age unit keeping the height constant, the price decreases by 1432 units. In the same way, the height coefficient can be interpreted.
 
+We can see in the adjusted R squared that this model with the predictor variables age and height explains 33.6% of the variance of the horse price.
+
 ```{r, echo=FALSE}
 model<-lm(Price~Age+Height,data = HorsePrices)
-summary(model)$coefficients
+summary(model)
 
 ```
 
