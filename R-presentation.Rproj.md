@@ -166,6 +166,7 @@ We are going to perform a multiple regression model to try to explain the price 
 The regression model is formulated under certain assumptions that we need to
 be aware off, since they need to be satisfied in order to make use of the model.
 
+
 ## Assumptions of linear regression:
 
 - Linearity: The mean of the response, is a linear function of the predictors,
